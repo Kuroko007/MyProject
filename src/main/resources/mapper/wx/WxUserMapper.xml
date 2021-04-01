@@ -24,6 +24,17 @@
         appid=#{appid,jdbcType=CHAR},
         phone=#{phone,jdbcType=CHAR},
         nickname=#{nickname,jdbcType=VARCHAR},
+        sex=#{sex,jdbcType=VARCHAR},
+        city=#{city,jdbcType=VARCHAR},
+        province=#{province,jdbcType=VARCHAR},
+        headimgurl=#{headimgurl,jdbcType=VARCHAR},
+        subscribe_time=#{subscribeTime,jdbcType=TIMESTAMP},
+        subscribe=#{subscribe,jdbcType=INTEGER},
+        unionid=#{unionid,jdbcType=VARCHAR},
+        remark=#{remark,jdbcType=VARCHAR},
+        tagid_list=#{tagidList,jdbcType=OTHER,typeHandler=com.cmsk.wxplatform.common.handler.JSONArrayTypeHandler},
+        subscribe_scene=#{subscribeScene,jdbcType=VARCHAR},
+        qr_scene_str=#{qrSceneStr,jdbcType=VARCHAR}
         WHERE openid=#{openid,jdbcType=VARCHAR}
     </update>
 
