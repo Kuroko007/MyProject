@@ -1,0 +1,19 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3305/wx?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+        username: root
+        password: root
+
+springfox:
+    documentation:
+        swagger-ui:
+            enabled: true
+
+jwt:
+    mini-be-secret: a78225f7117f5b70b9f4b8d71c1d846f
+
+wx:
+    miniapp:
+        appId: wxf1d925aec2445ca1
+        secret: a78225f7117f5b70b9f4b8d71c1d846f

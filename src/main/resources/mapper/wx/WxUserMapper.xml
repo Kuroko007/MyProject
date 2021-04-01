@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmsk.wxplatform.modules.wx.dao.WxUserMapper">
+    <cache-ref namespace="com.cmsk.wxplatform.modules.wx.dao.WxUserMapper"/>
+
+    <update id="unsubscribe">
+        UPDATE wx_user SET subscribe=0 WHERE openid=#{openid}
+    </update>
+
+    <insert id="insertUserInfo" parameterType="com.cmsk.wxplatform.modules.wx.entity.WxUser">
+        insert into wx_user (openid,appid,phone,nickname,sex,
+        city,province,headimgurl,subscribe_time,subscribe,unionid,remark,tagid_list,subscribe_scene,qr_scene_str)
+        values (
+        #{openid,jdbcType=VARCHAR},#{appid,jdbcType=CHAR},#{phone,jdbcType=CHAR},#{nickname,jdbcType=VARCHAR},
+        #{sex,jdbcType=INTEGER},#{city,jdbcType=VARCHAR},#{province,jdbcType=VARCHAR},#{headimgurl,jdbcType=VARCHAR},
+        #{subscribeTime,jdbcType=TIMESTAMP},#{subscribe,jdbcType=INTEGER},#{unionid,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR},#{tagidList,jdbcType=OTHER,typeHandler=com.cmsk.wxplatform.common.handler.JSONArrayTypeHandler},
+        #{subscribeScene,jdbcType=VARCHAR},#{qrSceneStr,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="updateByOpenId" parameterType="com.cmsk.wxplatform.modules.wx.entity.WxUser">
+        update wx_user set
+        appid=#{appid,jdbcType=CHAR},
+        phone=#{phone,jdbcType=CHAR},
+        nickname=#{nickname,jdbcType=VARCHAR},
+        WHERE openid=#{openid,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

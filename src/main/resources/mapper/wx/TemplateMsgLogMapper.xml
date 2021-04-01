@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmsk.wxplatform.modules.wx.dao.TemplateMsgLogMapper">
+
+    <insert id="insertTemplateMsgLog" parameterType="com.cmsk.wxplatform.modules.wx.entity.TemplateMsgLog">
+        insert into wx_template_msg_log (appid,touser,template_id,data,url,miniprogram,send_time,send_result)
+        values (#{appid,jdbcType=CHAR},#{touser,jdbcType=VARCHAR},#{templateId,jdbcType=VARCHAR},
+        #{data,jdbcType=OTHER,typeHandler=com.cmsk.wxplatform.common.handler.JSONArrayTypeHandler},
+        #{url,jdbcType=VARCHAR},#{miniprogram,jdbcType=OTHER,typeHandler=com.cmsk.wxplatform.common.handler.JSONObjectTypeHandler},
+        #{sendTime,jdbcType=TIMESTAMP},#{sendResult,jdbcType=VARCHAR})
+    </insert>
+</mapper>
