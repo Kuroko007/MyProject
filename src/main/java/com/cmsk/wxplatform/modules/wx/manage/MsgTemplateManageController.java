@@ -57,10 +57,11 @@ public class MsgTemplateManageController {
      * 信息
      */
     @GetMapping("/info/{id}")
-    @RequiresPermissions("wx:msgtemplate:info")
+    //@RequiresPermissions("wx:msgtemplate:info")
     @ApiOperation(value = "详情-通过ID")
     public R info(@PathVariable("id") Long id) {
-        MsgTemplate msgTemplate = msgTemplateService.getById(id);
+        //MsgTemplate msgTemplate = msgTemplateService.getById(id);
+        MsgTemplate msgTemplate = msgTemplateService.getByParamId(id);
 
         return R.ok().put("msgTemplate", msgTemplate);
     }
@@ -95,7 +96,8 @@ public class MsgTemplateManageController {
     @RequiresPermissions("wx:msgtemplate:update")
     @ApiOperation(value = "修改")
     public R update(@RequestBody MsgTemplate msgTemplate) {
-        msgTemplateService.updateById(msgTemplate);
+        //msgTemplateService.updateById(msgTemplate);
+        msgTemplateService.updateByTemplateId(msgTemplate);
 
         return R.ok();
     }

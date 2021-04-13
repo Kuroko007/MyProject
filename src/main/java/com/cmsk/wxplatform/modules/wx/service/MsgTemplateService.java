@@ -37,5 +37,9 @@ public interface MsgTemplateService extends IService<MsgTemplate> {
      * @throws WxErrorException
      */
     void syncWxTemplate(String appid) throws WxErrorException;
+
+    MsgTemplate getByParamId(Long id);
+
+    void updateByTemplateId(MsgTemplate msgTemplate);
 }
 

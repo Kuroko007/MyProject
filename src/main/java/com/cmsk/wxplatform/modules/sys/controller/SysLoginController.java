@@ -40,7 +40,7 @@ public class SysLoginController extends AbstractController {
     /**
      * 验证码
      */
-    @GetMapping("captcha")
+    @GetMapping("/captcha")
     @ApiOperation(value = "获取验证码",notes = "返回验证码图片")
     public void captcha(HttpServletResponse response, @ApiParam(value = "随意填，但每次不得重复", required = true)String uuid) throws IOException {
         response.setHeader("Cache-Control", "no-store, no-cache");
@@ -82,6 +82,11 @@ public class SysLoginController extends AbstractController {
 
         //生成token，并保存到数据库
         return sysUserTokenService.createToken(user.getUserId());
+    }
+
+    public static void main(String[] args) {
+        Sha256Hash sha256Hash = new Sha256Hash("admin", "YzcmCZNvbXocrsz9dm8e");
+        System.out.println(sha256Hash);
     }
 
 

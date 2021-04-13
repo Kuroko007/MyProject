@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.cmsk.wxplatform.common.handler.ArrayTypeHandler;
+import com.cmsk.wxplatform.common.handler.JSONArrayTypeHandler;
 import com.cmsk.wxplatform.common.utils.Json;
 import lombok.Data;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplate;

@@ -2,4 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cmsk.wxplatform.modules.wx.dao.MsgTemplateMapper">
     <cache-ref namespace="com.cmsk.wxplatform.modules.wx.dao.MsgTemplateMapper"/>
+    <resultMap id="BaseResultMap" type="com.cmsk.wxplatform.modules.wx.entity.MsgTemplate">
+        <!-- 实体类的json字段，typeHandler指定自定义的typeHandler -->
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="appid" property="appid" jdbcType="VARCHAR"/>
+        <result column="templateId" property="templateId" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="data" property="data" typeHandler="com.cmsk.wxplatform.common.handler.JSONArrayTypeHandler"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="miniprogram" property="miniprogram" typeHandler="com.cmsk.wxplatform.common.handler.JSONObjectTypeHandler"/>
+        <result column="status" property="status" jdbcType="DOUBLE"/>
+        <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <update id="updateByTemplateId" parameterType="com.cmsk.wxplatform.modules.wx.entity.MsgTemplate">
+        update wx_msg_template set
+        <if test="appid != null">
+            appid = #{appid,jdbcType=VARCHAR},
+        </if>
+            template_id=#{templateId,jdbcType=VARCHAR},
+        <if test="name != null">
+            name=#{name,jdbcType=VARCHAR},
+        </if>
+        <if test="title != null">
+            title=#{title,jdbcType=VARCHAR},
+        </if>
+        <if test="content != null">
+            content=#{content,jdbcType=VARCHAR},
+        </if>
+        <if test="data != null">
+            data=#{data,jdbcType=OTHER,typeHandler=com.cmsk.wxplatform.common.handler.JSONArrayTypeHandler},
+        </if>
+        <if test="url != null">
+            url=#{url,jdbcType=VARCHAR},
+        </if>
+        <if test="miniprogram != null">
+            miniprogram=#{miniprogram,jdbcType=OTHER,typeHandler=com.cmsk.wxplatform.common.handler.JSONObjectTypeHandler},
+        </if>
+        <if test="status != null">
+            status=#{status,jdbcType=DOUBLE},
+        </if>
+            update_time=#{updateTime,jdbcType=TIMESTAMP}
+    </update>
+    <select id="getByParamId" resultMap="BaseResultMap">
+        select * from wx_msg_template where id = #{id,jdbcType=INTEGER}
+    </select>
 </mapper>
